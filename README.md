@@ -8,7 +8,7 @@ Our library's website uses a content management system by Springshare's LibGuide
 Fork my code on http://codepen.io/avcoder/pen/PbZGZq  or clone this git repository.  However, my git repository is only one file which already combined my html/css/js code.  Also keep in mind, that since I used HTML5's date input field, certain browsers other than Chrome may not work properly.  I could not find a satisfactory datepicker solution that was keyboard navigable (for WCAG  accessibility requirements).
 
 ### Prerequisites
-The HTML file contains one template per assignment-type.  If you wish to eliminate or add steps, you would do so by creating/deleting the <steps> component.
+The HTML file contains one template per assignment-type.  If you wish to eliminate or add steps, you would do so by creating/deleting the steps component.
 ```
   <template v-if="picked === 'essay'">
     <template v-if="isDatesPicked()">
