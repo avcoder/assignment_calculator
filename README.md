@@ -8,7 +8,7 @@ Our library's website uses a content management system by Springshare's LibGuide
 Fork my code on http://codepen.io/avcoder/pen/PbZGZq  or clone this git repository.  However, my git repository is only one file which already combined my html/css/js code.  Also keep in mind, that since I used HTML5's date input field, certain browsers other than Chrome may not work properly.  I could not find a satisfactory datepicker solution that was keyboard navigable (for WCAG  accessibility requirements).
 
 ### Prerequisites
-The HTML file contains one template per assignment-type.  If you wish to eliminate or add steps, you would do so by creating/deleting the steps component.
+The HTML file contains one template per assignment-type.  If you wish to eliminate or add steps, you would do so by creating/deleting a steps component.
 ```
   <template v-if="picked === 'essay'">
     <template v-if="isDatesPicked()">
@@ -49,7 +49,7 @@ var ressay1 = {
 * [tachyons.io](http://tachyons.io/) - The CSS framework used
 
 ## Deployment
-I simply combined my html/css/js code found on my codepen and pasted it into an HTML5 boilerplate template within the body tags, I included Vue.js' CDN link in the script tag, and similarly included tachyons' link within the <head> tag. Upon saving it as an html file, I uploaded it into LibGuides as an asset.  The resulting id number given was then appended to our library URL.  For example, if your id number was 26667161, then the link to run the application would be  http://[Your library website]/ld.php?content_id=26667161
+I simply combined my html/css/js code found on my codepen and pasted it into an HTML5 boilerplate template within the body tags, I included Vue.js' CDN link in the script tag, and similarly included tachyons' link within the head tag. Upon saving it as an html file, I uploaded it into LibGuides as an asset.  The resulting id number given was then appended to our library URL.  For example, if your id number was 26667161, then the link to run the application would be  http://[Your library website]/ld.php?content_id=26667161
 
 ## Acknowledgments
 * As a guide, I used the functionality/output of what I saw from Research Project Calculator https://rpc.elm4you.org/
