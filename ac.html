@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Assignment Calculator</title>
+        <meta name="description" content="Assignment Calculator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://unpkg.com/tachyons@4.5.5/css/tachyons.min.css">
+		<style>
+		body { background-color: #eee}
+		article { background-color: #ccc}
+
+		.fade-enter-active, .fade-leave-active {
+		  transition: opacity .5s
+		}
+
+		.fade-enter, .fade-leave-active {
+		  opacity: 0
+		}
+		</style>
+</head>
+<body>
+
+  <main id="app" class="ph0 mh0 measure-wide f4 lh-copy center">
+
+  <aside name="top">
+    <h2>Assignment Calculator</h2>
+    <p class="f6">Works with Chrome--since it's "date" field is accessible (keyboard navigable).</p>
+
+    <input type="radio" id="essay" value="essay" v-model="picked">
+    <label for="essay">Research Assignment / Essay</label>
+    <br>
+    <input type="radio" id="presentation" value="presentation" v-model="picked">
+    <label for="presentation">Presentation with slides</label>
+    <br>
+    <input type="radio" id="video" value="video" v-model="picked">
+    <label for="video">Video Assignment</label>
+
+    <br /><br />
+
+    <div>Begin Date: <input type="date" v-model="fromDate" placeholder="mm/dd/yyyy"></div><br />
+    <div>Due Date: <input type="date" v-model="toDate" placeholder="mm/dd/yyyy"></div>
+  </aside>
+  <br /><br />
+
+    <template v-if="picked === 'essay'">
+      <template v-if="isDatesPicked()">
+
+        <article class="mw7 center ph3 ph5-ns tc br2 pv5 bg-washed-green dark-green mb5">
+          <h2 class="fw2 f4 f3-ns lh-title mt0 mb3">
+            Roadmap to Writing a Research Essay
+          </h2>
+
+          <p class="fw1 f5 mt0 mb3">
+            The following series of steps were obtained from our<br />
+            <a class="link hover-orange" href="https://www.youtube.com/watch?v=6SozOjFc30c">video: Roadmap to Research</a><br />
+            View more 'research help' videos on our Youtube channel <a class="link hover-orange" href="https://www.youtube.com/user/LibraryGeorgian/videos?sort=dd&view=0&shelf_id=0">youtube.com/LibraryGeorgian</a>
+          </p>
+        </article>
+        <steps v-bind:stepobject='ressay1'></steps>
+        <steps v-bind:stepobject='ressay2'></steps>
+        <steps v-bind:stepobject='ressay3'></steps>
+        <steps v-bind:stepobject='ressay4'></steps>
+        <steps v-bind:stepobject='ressay5'></steps>
+        <steps v-bind:stepobject='ressay6'></steps>
+        <steps v-bind:stepobject='ressay7'></steps>
+        <steps v-bind:stepobject='ressay8'></steps>
+        <steps v-bind:stepobject='ressay9'></steps>
+        <a class="f6 link dim br-pill ba ph3 pv2 mb2 dib light-purple" href="#top">Back to top ^</a>
+      </template>
+    </template>
+
+
+
+    <template v-if="picked === 'presentation'">
+      <template v-if="isDatesPicked()">
+        <article class="mw7 center ph3 ph5-ns tc br2 pv5 bg-washed-green dark-green mb5">
+          <h2 class="fw2 f4 f3-ns lh-title mt0 mb3">
+            Creating a Presentation with slides
+          </h2>
+
+          <p class="fw1 f5 mt0 mb3">
+            View more 'research help' videos on our Youtube channel <a class="link hover-orange" href="https://www.youtube.com/user/LibraryGeorgian/videos?sort=dd&view=0&shelf_id=0">youtube.com/LibraryGeorgian</a>
+          </p>
+        </article>
+        <steps v-bind:stepobject='presentation1'></steps>
+        <steps v-bind:stepobject='presentation2'></steps>
+        <steps v-bind:stepobject='presentation3'></steps>
+        <steps v-bind:stepobject='presentation4'></steps>
+        <a class="f6 link dim br-pill ba ph3 pv2 mb2 dib light-purple" href="#top">Back to top ^</a>
+      </template>
+    </template>
+
+    <template v-if="picked === 'video'">
+      <template v-if="isDatesPicked()">
+        <article class="mw7 center ph3 ph5-ns tc br2 pv5 bg-washed-green dark-green mb5">
+          <h2 class="fw2 f4 f3-ns lh-title mt0 mb3">
+            Creating a Video Assignment
+          </h2>
+
+          <p class="fw1 f5 mt0 mb3">
+            View more 'research help' videos on our Youtube channel <a class="link hover-orange" href="https://www.youtube.com/user/LibraryGeorgian/videos?sort=dd&view=0&shelf_id=0">youtube.com/LibraryGeorgian</a>
+          </p>
+        </article>
+        <steps v-bind:stepobject='video1'></steps>
+        <steps v-bind:stepobject='video2'></steps>
+        <steps v-bind:stepobject='video3'></steps>
+        <steps v-bind:stepobject='video4'></steps>
+        <steps v-bind:stepobject='video5'></steps>
+        <steps v-bind:stepobject='video6'></steps>
+        <steps v-bind:stepobject='video7'></steps>
+        <steps v-bind:stepobject='video8'></steps>
+
+        <a class="f6 link dim br-pill ba ph3 pv2 mb2 dib light-purple" href="#top">Back to top ^</a>
+      </template>
+    </template>
+
+  </main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+<script>
+// STEPS CONTENT IN JSON OBJECT FORMAT
+var ressay1 = {
+      step: '1',
+      heading: 'Clearly state your research question',
+      todos: {
+          1: 'Review the guidelines and if you need further clarification, check with your professor',
+          2: 'General Definition: A research essay is a piece of writing that provides information about a particular topic for which you have researched. Usually it is a topic that you are not familiar with, so investigation and assessment will be a large part of the process',
+          3: 'For help developing your research question view "Taming Your Research Topic"'
+      },
+      linkURL: 'https://www.youtube.com/watch?v=lrT4U8Nq9OQ',
+      linkText: 'View video: Taming Your Research Topic',
+      percentage: '10'
+};
+
+var ressay2 = {
+      step: '2',
+      heading: 'Examine your assignment and identify any requirements',
+      todos: {
+          1: 'What types of resources do you need to use, such as books, peer-reviewed articles, or web resources?',
+          2: 'How many resources do you need? For example it might require that you use three articles, or at least one web resource',
+          3: 'What type of information is needed?  For example, do you need research articles, statistics, images?',
+          4: 'To understand why you may choose one resource over another, view "Books, Videos and Articles - what are they good for anyway?"'
+      },
+      linkURL: 'https://www.youtube.com/watch?v=O72nYw2RVoE',
+      linkText: 'View video: Books, Videos and Articles',
+      percentage: '20'
+};
+
+var ressay3 = {
+      step: '3',
+      heading: 'Define and explore your topic',
+      todos: {
+          1: 'Use your research question to generate some manageable, focused questions that you will need to address in your research',
+          2: 'Use the basic questions – who, what, where, why, when, and how – to help you',
+          3: 'Decide what keywords you are going to use in your search'
+      },
+      linkURL: 'http://library.georgiancollege.ca/doingresearch/research-help',
+      linkText: 'Contact Research Help',
+      percentage: '30'
+};
+
+
+var ressay4 = {
+      step: '4',
+      heading: 'Determine the types of information that you need and where you will find it',
+      todos: {
+          1: 'Where will you find this information? Is it on the web or in one of the library’s databases? Should you interview someone knowledgeable about your topic?',
+          2: 'Do you need a book to provide a basic introduction to your topic?',
+          3: 'Now you know what you’re looking for and where you’re going to look and can carry out your search'
+      },
+      linkURL: 'http://library.georgiancollege.ca/doingresearch/intro',
+      linkText: 'View Introduction to Research Guidelines',
+      percentage: '40'
+};
+
+var ressay5 = {
+      step: '5',
+      heading: 'Evaluate what you have found against your research question and assignment',
+      todos: {
+          1: 'You need to think about relevance, authority, point of view, timeliness, and the context of what you find',
+          2: 'Make sure you have all of the details necessary to reference the resources you are using in your final paper or product'
+      },
+      linkURL: 'http://library.georgiancollege.ca/c.php?g=4009&p=3777564',
+      linkText: 'View Evaluation Guidelines',
+      percentage: '50'
+};
+
+var ressay6 = {
+      step: '6',
+      heading: 'Create an essay outline',
+      todos: {
+          1: 'Be sure to include a base for your introduction, body paragraphs and conclusion',
+          2: 'Check out the Writing Centre’s guide on how to write introductions, conclusions, thesis statements and more'
+      },
+      linkURL: 'http://library.georgiancollege.ca/c.php?g=3998&p=815766',
+      linkText: 'Writing Centre Guide',
+      percentage: '60'
+};
+
+var ressay7 = {
+      step: '7',
+      heading: 'Write your first draft',
+      todos: {
+          1: 'It’s ok if it’s not perfect the first time around!',
+          2: 'For additional help on formatting your essay, email, drop in or make an appointment with the Writing Centre'
+      },
+      linkURL: 'http://library.georgiancollege.ca/c.php?g=3998&p=14040#s-lg-box-32451',
+      linkText: 'Contact Writing Centre or Book an Appointment',
+      percentage: '70'
+};
+
+var ressay8 = {
+      step: '8',
+      heading: 'Check over your work',
+      todos: {
+          1: 'Proofread your work',
+          2: 'Ask someone to proofread',
+          3: 'Ensure you have not plagiarized and double check that you have cited properly'
+      },
+      linkURL: 'http://library.georgiancollege.ca/citing',
+      linkText: 'View APA Writing & Citing Guide',
+      percentage: '95'
+};
+
+var ressay9 = {
+      step: '9',
+      heading: 'Submit your Assignment',
+      todos: {
+          1: 'Congratulations',
+      },
+      linkURL: 'https://gc.blackboard.com/webapps/login/',
+      linkText: 'Blackboard',
+      percentage: '100'
+};
+
+var presentation1 = {
+      step: '1',
+      heading: 'Examine your assignment and identify any presentation requirements',
+      todos: {
+          1: 'Review the guidelines and if you need further clarification, check with your professor',
+          2: 'Clarify the expected length of your presentation',
+          3: 'Know your setting and your audience',
+          4: 'What technology and software will be needed?'
+      },
+      linkURL: 'http://www.georgiancollege.ca/student-services/information-technology/media-services-tab/',
+      linkText: 'Media Services Info',
+      percentage: '10'
+};
+
+var presentation2 = {
+      step: '2',
+      heading: 'Create an outline of your presentation',
+      todos: {
+          1: 'This will include a greeting, an introduction, your major points and the conclusion'
+      },
+      linkURL: 'https://inside.senecacollege.ca/learningcentres/tipsheets2012/oral-skills/presentation-outline.html',
+      linkText: 'Seneca College\'s Presentation Outlines Tip Sheets',
+      percentage: '20'
+};
+
+var presentation3 = {
+      step: '3',
+      heading: 'Create a first draft and present it',
+      todos: {
+          1: 'Find a friend or family member to watch you present your presentation and have them critique you',
+          2: 'Discuss the pros and cons of your delivery and content'
+      },
+      linkURL: 'https://www.e-education.psu.edu/styleforstudents/c7_p4.html',
+      linkText: 'Tips on Presentation Skills and Powerpoint',
+      percentage: '50'
+};
+
+var presentation4 = {
+      step: '4',
+      heading: 'Due',
+      todos: {
+          1: 'Practice your revised presentation on the same and/or different people until you are content with the outcome',
+          2: 'Don\'t forget to back up your slides'
+      },
+      linkURL: 'http://www.georgiancollege.ca/student-services/information-technology/contact-tab',
+      linkText: 'Contact IT Help',
+      percentage: '100'
+};
+
+var video1 = {
+      step: '1',
+      heading: 'Understand your assignment',
+      todos: {
+          1: 'Review the guidelines and if you need further clarification, check with your professor',
+          2: 'Make sure you understand what your topic is',
+          3: 'There are many different types of video assignments so be sure to clarify what is expected of you'
+      },
+      linkURL: 'https://gc.blackboard.com/webapps/login',
+      linkText: 'Blackboard',
+      percentage: '5'
+};
+
+var video2 = {
+      step: '2',
+      heading: 'Determine the equipment and resources you will need',
+      todos: {
+          1: 'If you need special equipment be sure to book this in advance'
+      },
+      linkURL: 'http://www.georgiancollege.ca/student-services/information-technology/media-services-tab',
+      linkText: 'Media Services Info',
+      percentage: '10'
+};
+
+var video3 = {
+      step: '3',
+      heading: 'Research and evaluate',
+      todos: {
+          1: 'Research your topic and evaluate whether or not it is a useful source for your video',
+          2: 'Gather any necessary music, images or content',
+          3: 'Be sure to keep track of your sources in order to cite later on'
+      },
+      linkURL: 'http://library.georgiancollege.ca/doingresearch/research-help',
+      linkText: 'Contact Research Help',
+      percentage: '20'
+};
+
+var video4 = {
+      step: '4',
+      heading: 'Create an outline',
+      todos: {
+          1: 'Create a script and/or storyboard to plan out your video ahead of time',
+          2: 'General definition of storyboard – images that are laid out to represent sequence of events within a video'
+      },
+      linkURL: 'https://resources.goanimate.com/what-is-a-storyboard-and-why-do-you-need-one',
+      linkText: 'Video: GoAnimate Storyboard Inspiration',
+      percentage: '30'
+};
+
+var video5 = {
+      step: '5',
+      heading: 'Pre-production finalizations',
+      todos: {
+          1: 'Make any necessary revisions to your script/storyboard',
+          2: 'Rehearse your scenes',
+          3: 'Gather any props needed'
+      },
+      linkURL: 'http://ra.ocls.ca/ra/login.aspx?url=http://fod.infobase.com/PortalPlaylists.aspx?wID=103261&xtid=35877',
+      linkText: 'Video: Digital Movie Maker - Guidance from an Expert',
+      percentage: '40'
+};
+
+
+
+var video6 = {
+      step: '6',
+      heading: 'Begin production',
+      todos: {
+          1: 'Film shots according to your script/storyboard',
+          2: 'For more tips, browse our video production books mostly found under the call number: PN 1992'
+      },
+      linkURL: 'http://ra.ocls.ca/ra/login.aspx?inst=georgian&url=http://search.ebscohost.com.eztest.ocls.ca/login.aspx?direct=true&bquery=SU+((video+AND+recordings+AND+production+AND+%26quot%3band%26quot%3b+AND+direction))&cli0=FC&clv0=Y&type=1&site=eds-live&scope=site',
+      linkText: 'Video Production Booklist',
+      percentage: '50'
+};
+
+
+var video7 = {
+      step: '7',
+      heading: 'Post-prodution edits',
+      todos: {
+          1: 'Make any edits as necessary',
+          2: 'Preview your video and fix any problems that you may encounter'
+      },
+      linkURL: 'http://ra.ocls.ca/ra/login.aspx?inst=georgian&url=http://search.ebscohost.com.eztest.ocls.ca/login.aspx?direct=true&bquery=SU+((video+AND+recordings+AND+production+AND+%26quot%3band%26quot%3b+AND+direction))&cli0=FC&clv0=Y&type=1&site=eds-live&scope=site',
+      linkText: 'Video Production Booklist',
+      percentage: '90'
+};
+
+var video8 = {
+      step: '8',
+      heading: 'Due',
+      todos: {
+          1: 'Edit any accompanying documents that will need to be handed in to your instructor, such as scripts, storyboards, references, etc.',
+          2: 'Be sure to back up your video'
+      },
+      linkURL: 'http://library.georgiancollege.ca/citing',
+      linkText: 'View APA Citing & Writing Guide',
+      percentage: '100'
+};
+
+
+
+// TEMPLATE for <steps>
+var Step = {
+  props: ['stepobject'],
+
+  computed: {
+    calcDueDate: function() {
+      // initialize dates.  must use suffix to include my timezone GMT-5
+      var ISOsuffix = 'T00:00:00.000-05:00';
+      var fromDateObject = new Date(vm.fromDate + ISOsuffix);
+      var toDateObject = new Date(vm.toDate + ISOsuffix);
+      var daysBetween = this.diffDays(fromDateObject, toDateObject);
+      var numDays = this.calcNumDays(daysBetween, this.stepobject.percentage);
+      var dueDate_String = this.nextDueDate(fromDateObject, numDays);
+
+      return dueDate_String;
+    }
+  },
+
+  methods: {
+    // calculate number of days between both dates
+    diffDays: function(fromDate, toDate) {
+      var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+      return Math.round(Math.abs((fromDate.getTime() - toDate.getTime())/(oneDay)));
+    },
+
+    // will calculate number of days based off percentage.  This number will be used to add to fromDate to make dueDate
+    calcNumDays: function (diffDays, percentage) {
+      return (Math.floor(diffDays * percentage * 0.01)); // using floor to round down since it's an off by 1 (Nov 1 + 3 days = Nov 3?)
+    },
+
+    // input fromDate, and numberofDaysToAdd, will output duedate in string format.  This will be used to show when each step is due.
+    nextDueDate: function(fromDate, numDays) {
+      var ISOsuffix = 'T00:00:00.000-05:00';
+      var dueDate = new Date(vm.fromDate + ISOsuffix); // this will be a varying calculated value for each step
+      dueDate.setDate(fromDate.getDate() + numDays);
+      return dueDate.toDateString();
+    },
+  },
+
+  template: '<transition name="fade"><article class="pa3 mw8 br3 hidden ba b--black-10 mv4"><h3 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3"">{{ stepobject.step }}. {{ stepobject.heading }} by {{ calcDueDate }}</h3>\
+            <ul class="list pl0 ml0 center mw8 ba b--light-silver br2 bg-washed-blue">\
+              <li v-for="(value, key) in stepobject.todos" class="ph3 pv3 bb b--light-silver">\
+              {{value}}\
+              </li></ul>\
+              <a v-bind:href="stepobject.linkURL" class="f6 link dim br2 ph3 pv2 mb2 dib white bg-mid-gray">{{ stepobject.linkText }}</a>\
+            </article></transition>'
+};
+
+var vm = new Vue({
+  el: '#app',
+  data: {
+    fromDate: 'gettoday()',
+    toDate: '',
+    picked: 'essay',
+    stepobject: ''  // will be determined in the HTML <steps v-bind...>
+  },
+
+  methods: {
+    isDatesPicked: function()
+    {
+      // check to make sure both date fields are filled and in chronological order
+      if (this.fromDate !== '' && this.toDate !== '' && vm.toDate > vm.fromDate) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+  },
+
+  components: {
+    'steps': Step
+  }
+});
+
+
+</script>
+</body></html>
