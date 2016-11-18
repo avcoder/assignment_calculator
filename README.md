@@ -1,5 +1,5 @@
 # Assignment Calculator
-My Assignment Calculator uses Vue.js and tachyons.io (css framework) to help students enter a due date for a particular kind of assignment, and the program outputs a set of milestone dates from which students can work towards finishing their assignment.
+My Assignment Calculator http://codepen.io/avcoder/full/PbZGZq/ uses Vue.js and tachyons.io (css framework) to help students enter a due date for a particular kind of assignment, and the program outputs a set of milestone dates from which students can work towards finishing their assignment.
 
 ## Motivation
 Our library's website uses a content management system by Springshare's LibGuides.  Consequently, as a programmer, I'm limited to only creating/editing html/css/js (i.e. client-side code).  Fortunately, the javascript framework Vue.js allowed me to create this single page application without direct programming access to a webserver.
