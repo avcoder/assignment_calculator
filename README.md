@@ -5,7 +5,7 @@ My Assignment Calculator http://codepen.io/avcoder/full/PbZGZq/ uses Vue.js and 
 Our library's website uses a content management system by Springshare's LibGuides.  Consequently, as a programmer, I'm limited to only creating/editing html/css/js (i.e. client-side code).  Fortunately, the javascript framework Vue.js allowed me to create this single page application without direct server-side coding access to a webserver.
 
 ## Getting Started
-Fork my code on http://codepen.io/avcoder/pen/PbZGZq  or clone this git repository.  However, my git repository is only one file which already combined my html/css/js code.  Also keep in mind, that since I used HTML5's date input field, certain browsers other than Chrome may not work properly.  I could not find a satisfactory datepicker solution that was keyboard navigable (for WCAG  accessibility requirements) for all major browsers.
+Fork my code on http://codepen.io/avcoder/pen/PbZGZq  or clone this git repository.  However, my git repository is only one file which already combined my html/css/js code.  Also keep in mind, that since I used HTML5's date input field, certain browsers other than Chrome may not work properly.  I could not find a satisfactory datepicker solution that was keyboard navigable (i.e. WCAG  accessibility requirements) for all major browsers.
 
 ### Prerequisites
 The HTML file contains one template per assignment-type.  If you wish to eliminate or add steps, you would do so by creating/deleting a steps component.
