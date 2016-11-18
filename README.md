@@ -27,7 +27,7 @@ The HTML file contains one template per assignment-type.  If you wish to elimina
   </template>
 ```
 
-Each step is defined by one variable object which can be edited to suit your own educational goals.  It contains room for only one link which will look like a call to action button at the bottom of the card set.  For example, note how the first <step> component listed uses 'ressay1' which is defined in the javascript.
+Each step is defined by one variable object which can be edited to suit your own educational goals.  It contains room for only one link which will look like a call to action button at the bottom of the card set.  For example, note how the first steps component listed uses 'ressay1' which is defined in the javascript below.
 
 ```
 var ressay1 = {
