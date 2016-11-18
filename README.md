@@ -49,7 +49,7 @@ var ressay1 = {
 * [tachyons.io](http://tachyons.io/) - The CSS framework used
 
 ## Deployment
-I simply combined my html/css/js code found on my codepen and pasted it into an HTML5 boilerplate template within the body tags, I included Vue.js' CDN link in the <script> tag, and similarly included tachyons' link within the <head> tag. Upon saving it as an html file, I uploaded it into LibGuides as an asset.  The resulting id number given was then appended to our library URL.  For example, if your id number was 26667161, then the link to run the application would be  http://[Your library website]/ld.php?content_id=26667161
+I simply combined my html/css/js code found on my codepen and pasted it into an HTML5 boilerplate template within the body tags, I included Vue.js' CDN link in the script tag, and similarly included tachyons' link within the <head> tag. Upon saving it as an html file, I uploaded it into LibGuides as an asset.  The resulting id number given was then appended to our library URL.  For example, if your id number was 26667161, then the link to run the application would be  http://[Your library website]/ld.php?content_id=26667161
 
 ## Acknowledgments
 * As a guide, I used the functionality/output of what I saw from Research Project Calculator https://rpc.elm4you.org/
