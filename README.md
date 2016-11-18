@@ -40,7 +40,7 @@ var ressay1 = {
       },
       linkURL: 'https://www.youtube.com/watch?v=lrT4U8Nq9OQ',
       linkText: 'View video: Taming Your Research Topic',
-      percentage: '10'
+      percentage: '10' // percentage of time needed to complete this milestone.
 };
 ```
 
