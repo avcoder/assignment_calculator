@@ -53,5 +53,5 @@ I simply combined my html/css/js code found on my codepen and pasted it into an 
 
 ## Acknowledgments
 * As a guide, I used the functionality/output of what I saw from Research Project Calculator https://rpc.elm4you.org/
-* and Humber College's Assignment Calculator http://www.humber.ca/assignment-calculator/
+* Humber College's Assignment Calculator http://www.humber.ca/assignment-calculator/
 * Twitter@ValerieBenigno for helping with the content/wording
