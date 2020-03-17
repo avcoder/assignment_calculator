@@ -9,7 +9,7 @@ Fork my code on http://codepen.io/avcoder/pen/PbZGZq  or clone this git reposito
 
 ### Prerequisites
 The HTML file contains one template per assignment-type.  If you wish to eliminate or add steps, you would do so by creating/deleting a steps component.
-```
+```html
   <template v-if="picked === 'essay'">
     <template v-if="isDatesPicked()">
       ...
@@ -29,7 +29,7 @@ The HTML file contains one template per assignment-type.  If you wish to elimina
 
 Each step is defined by one variable object which can be edited to suit your own educational goals.  It contains room for only one link which will look like a call to action button at the bottom of the card set.  For example, note how the first steps component listed uses 'ressay1' which is defined in the javascript below.
 
-```
+```js
 var ressay1 = {
       step: '1',
       heading: 'Clearly state your research question',
